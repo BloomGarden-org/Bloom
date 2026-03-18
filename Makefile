@@ -2,6 +2,7 @@
 root := ./app
 build := $(root)/build
 bin := main.exe
+lib := libgarden.a
 
 # Compiler
 CXX := g++
@@ -34,17 +35,21 @@ obj_diff := \
 	$(root)/DiffEngine/build/TreeDiff.o 
 
 # Submodules
-SUBDIRS := app/fileSystemManagement
+SUBDIRS := app/fileSystemManagement app/DiffEngine
 
 .PHONY: all $(SUBDIRS) clean
 
-all: $(SUBDIRS) $(bin)
+all: $(SUBDIRS) $(lib) $(bin)
 
 $(SUBDIRS):
 	$(MAKE) -C $@
 
+# Build the library
+$(lib): $(obj_filesystem) $(obj_diff) $(addprefix $(build)/, $(obj_GardenManipulation) $(obj_paths) $(obj_POD))
+	ar rcs $@ $^
+
 # Build the final executable
-$(bin): $(obj_filesystem) $(obj_diff) $(addprefix $(build)/, main.o $(obj_GardenManipulation) $(obj_paths) $(obj_POD)) 
+$(bin): $(addprefix $(build)/, main.o) $(lib)
 	@echo Detected OS: $(detected_OS)
 	$(CXX) $^ -o $@ $(LDFLAGS)
 

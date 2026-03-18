@@ -1,7 +1,9 @@
 #pragma once
 #include<string.h>
 #include<stdlib.h>
+#ifndef HASH_STR_SIZE
 #define HASH_STR_SIZE 41
+#endif
 #ifdef __cplusplus
 extern "C" {
 #endif

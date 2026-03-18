@@ -1,6 +1,7 @@
+#define _POSIX_C_SOURCE 200809L
 #include "GardenTag_struct.h"
-#include "string.h"
-#include "stdlib.h"
+#include <string.h>
+#include <stdlib.h>
 
 
 
