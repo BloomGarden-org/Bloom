@@ -15,6 +15,7 @@ CFLAGS := -Wall -std=c11
 obj_POD := FOS_metadata.o FOS_metadata_c_api.o
 obj_GardenManipulation := FileWriter.o FileBuilder.o Navigation.o
 obj_paths := GardenPath.o
+obj_api := Garden_c_api.o
 
 obj_filesystem := \
 	$(root)/fileSystemManagement/build/Index.o \
@@ -45,7 +46,7 @@ $(SUBDIRS):
 	$(MAKE) -C $@
 
 # Build the library
-$(lib): $(obj_filesystem) $(obj_diff) $(addprefix $(build)/, $(obj_GardenManipulation) $(obj_paths) $(obj_POD))
+$(lib): $(obj_filesystem) $(obj_diff) $(addprefix $(build)/, $(obj_api) $(obj_GardenManipulation) $(obj_paths) $(obj_POD))
 	ar rcs $@ $^
 
 # Build the final executable
@@ -83,6 +84,10 @@ $(build)/Navigation.o: $(root)/GardenNavigation/Navigation.cpp
 ##===============================================================================
 $(build)/GardenPath.o: $(root)/paths/GardenPath.cpp
 	@echo "making $@..."
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(build)/Garden_c_api.o: $(root)/Garden_c_api.cpp $(root)/Garden_c_api.h
+	@echo "Compiling Garden_c_api.cpp..."
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(build)/main.o: $(root)/main.cpp
