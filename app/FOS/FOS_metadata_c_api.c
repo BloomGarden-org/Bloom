@@ -1,5 +1,7 @@
+#define _POSIX_C_SOURCE 200809L
 #include "FOS_metadata_struct.h"
-
+#include <string.h>
+#include <stdlib.h>
 
 
 metadataFOS_S *metadata_init(const char* fostype, const char (*hash)[HASH_STR_SIZE], const char *fosname){

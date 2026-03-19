@@ -44,7 +44,7 @@ $(BUILD)/Index_c_api.o: index/Index_c_api.c index/Index_struct.h
 $(BUILD)/HashNode.o: seed/HashNode.cpp seed/HashNode.h seed/HashNode_struct.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(BUILD)/HashTree.o: seed/Hashtree.cpp seed/Hashtree.h garden_tags/GardenTag_struct.h
+$(BUILD)/HashTree.o: seed/HashTree.cpp seed/HashTree.h garden_tags/GardenTag_struct.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

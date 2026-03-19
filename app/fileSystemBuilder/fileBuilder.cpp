@@ -4,7 +4,9 @@
 #define LOGGER_STATUS LOGGER_ACTIVE
 #include "../debugging.h"
 
+#ifndef LOG_PATH
 #define LOG_PATH(p) LOG((std::filesystem::absolute(p)).string().c_str())
+#endif
 #define TESTINGPATH "app\\testing\0"
 
 

@@ -7,8 +7,6 @@ CFLAGS := -std=c11 -Wall -I. -IFOS -I "C:/mingw64/include"
 BUILD := build
 
 obj := \
-	$(BUILD)/FOS_metadata.o \
-	$(BUILD)/FOS_metadata_c_api.o \
 	$(BUILD)/Block.o \
 	$(BUILD)/Diff.o \
 	$(BUILD)/Juxtapose.o \

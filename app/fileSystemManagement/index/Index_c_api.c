@@ -1,6 +1,7 @@
+#define _POSIX_C_SOURCE 200809L
 #include "Index_struct.h"
-#include "stdlib.h"
-#include "string.h"
+#include <stdlib.h>
+#include <string.h>
 #define HASH_BYTES_SIZE 20
 #define HASH_STR_SIZE (HASH_BYTES_SIZE * 2 + 1)
 
